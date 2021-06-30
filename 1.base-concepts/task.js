@@ -2,15 +2,18 @@
 function solveEquation(a, b, c) {
   let arr = [];
   let D = b**2 - 4 * a * c;
-  let x = 0;
-  let x1 = 0;
-  let x2 = 0;
+  let x = -b / (2 * a);
+  let x1 = (-b + Math.sqrt(D) ) / (2 * a);
+  let x2 = (-b - Math.sqrt(D) ) / (2 * a);
   if (D > 0) {
-    return x1 = [(-b + Math.sqrt(D) ) / (2 * a)], x2 = [(-b - Math.sqrt(D) ) / (2 * a)];
+    arr[0] = x1;
+    arr[1] = x2;
+    return arr;
   } else if (D < 0) {
-    return [];
-  } else (D === 0) {
-    return x = [-b / (2 * a)];
+    return arr;
+  } else if (D === 0) {
+    arr[0] = x;
+    return arr;
   }
 };
 
@@ -21,11 +24,11 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let sumFirst = number(contribution);
   let sumCredit = number(amount);
   let time;
-  if (percentRate === Infinity) {
+  if (percentRate === Number.isNaN()) {
     `Параметр "процентнтая ставка" содержит неправильное значение ${percent}`
-  } else if (sumFirst === Infinity) {
+  } else if (sumFirst === Number.isNaN()) {
     `Параметр "сумма первоначального взноса" содержит неправильное значение ${contribution}`
-  } else (sumCredit === Infinity) {
+  } else if (sumCredit === Number.isNaN()) {
     `Параметр "сумма кредита" содержит неправильное значение ${amount}`
   }
   return totalAmount;
