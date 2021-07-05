@@ -36,10 +36,15 @@ function makeWork(arrOfArr, func) {
 
 // Задание 3
 function worker2(arr) {
-  let diff = 0;
+  let max = arr[0];
+  let min = arr[0];
   for (let i = 0; i < arr.length; i++) {
-    diff += arr[i];
-  }
-  return diff;
+    if ( max < arr[i]) {
+      max = arr[i]
+    } else if (min > arr[i]) {
+      min = arr[i]
+    }
+}
+return max - min;
 }
 makeWork(arrOfArr, worker2)

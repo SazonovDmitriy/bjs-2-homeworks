@@ -1,10 +1,15 @@
 function Student(name, gender, age) {
-    // Ваш код
+  let students = new Student[(name, gender, age)];
+
 
 }
 
-Student.prototype.setSubject = function (subjectName) {
-  //ваш код
+Student.prototype.setSubject = function (...subjectName) {
+  
 }
 
-// ваш код для остальных методов
+Student.prototype.mark = function addMark(...mark) {
+  if (this.mark === undefined) {
+    this.mark === 
+  } else 
+}
