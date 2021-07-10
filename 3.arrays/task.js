@@ -11,6 +11,6 @@ return result;
 
 
 function advancedFilter(arr) {
-  let result = arr.filter(item, index, arr).filter(Math.abs(item) % 3 === 0).map(item * 10)
+  let result = arr.filter((arr) => arr > 0).filter((arr) => arr % 3 === 0).map((arr) => arr * 10)
   return result;
 }

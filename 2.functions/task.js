@@ -25,7 +25,7 @@ function worker(arr) {
   return sum;
 }
 function makeWork(arrOfArr, func) {
-  let max = 0;
+  let max = Number.NEGATIVE_INFINITY; // -infinity
   for (let i = 0; i < arrOfArr.length; i++) {
   let result = func(arrOfArr[i]);
   if (result > max) {
@@ -41,9 +41,7 @@ function worker2(arr) {
   for (let i = 0; i < arr.length; i++) {
     if ( max < arr[i]) {
       max = arr[i]
-    } else if (min > arr[i]) {
-      min = arr[i]
-    }
+    } if (arr[i] < min) min = arr[i];
 }
 return max - min;
 }
