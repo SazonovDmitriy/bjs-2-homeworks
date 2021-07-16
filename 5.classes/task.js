@@ -7,6 +7,7 @@ class PrintEditionItem {
         this.pagesCount = pagesCount;
         this.state = 100;
         this.type = null;
+        this.author = "";
     }
     set state(stateUp) {
         stateUp *= 1.5;
@@ -22,7 +23,6 @@ class PrintEditionItem {
     return this._state;
     }
     fix() {
-        this.state = this._state;
         return this._state;
     }
 }
@@ -36,30 +36,33 @@ class Magazine extends PrintEditionItem {
 }
 
 class Book extends PrintEditionItem {
-    constructor(author) {
-    super(author);
+    constructor(author, name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount);
     this.author = author;
     this.type = "book";
     }
 }
 
 class NovelBook extends Book {
-    constructor(type) {
-        super(type)
+    constructor(author, name, releaseDate, pagesCount) {
+        super(author)
+        this.author = author;
         this.type = "novel";
     }
 }
 
 class FantasticBook extends Book {
-    constructor(type) {
-        super(type)
+    constructor(author, name, releaseDate, pagesCount) {
+        super(author)
+        this.author = author;
         this.type = "fantastic";
     }
 }
 
 class DetectiveBook extends Book {
-    constructor(type) {
-        super(type)
+    constructor(author, name, releaseDate, pagesCount) {
+        super(author)
+        this.author = author;
         this.type = "detective";
     }
 }
@@ -67,21 +70,20 @@ class DetectiveBook extends Book {
 // 2 Задание
 
 class Library extends PrintEditionItem {
-    constructor(name, books) {
-        this.name = "";
+    constructor(books, name) {
+        super(books, name)
+        name = this.name;
         this.books = [];
     }
     addBook(book) {
-        this.books = this.book;
+        if (this.state > 30) {
+        this.books.push(book);
+        };
     }
     findBookBy(type, value) {
-
+            
     }
-    // giveBookByName(bookName) {
-    //     if (this.book === bookName) {
-    //         return delete this.book;
-    //     } else (this.book === bookName) {
-    //         return this.book === null;
-    //     }
-    // } Здесь не совсем понял
+    giveBookByName(bookName) {
+       
+    }
 }
