@@ -1,17 +1,15 @@
 // 1 Задание
 
 function parseCount(value) {
-    const errorValid = new Error("Невалидное значение");
     const parsedValue = Number.parseInt(value);
     if (isNaN(parsedValue)) {
-        throw errorValid
+        throw new Error("Невалидное значение");
     }
     return parsedValue;
 }
 function validateCount(value) {
     try {
-        const parsedValue = parseCount(value);
-        return parsedValue;
+        return parseCount(value);
     } catch (errorValid) {
         return errorValid;
     }
@@ -20,23 +18,57 @@ function validateCount(value) {
 
 class Triangle {
     constructor(top, left, right) {
-        const errorSum = new Error("Треугольник с такими сторонами не существует");
-        if (top + left < right || top + right < left || right + left < top) {
-        throw errorSum;
+        this.top = top;
+        this.left = left;
+        this.right = right;
+        this.errorSum = new Error("Треугольник с такими сторонами не существует");
+        if (!this.isValid()) {
+            throw this.errorSum;
         }
     }
-        getPerimetr() {
-            return errorSum;
+    isValid() {
+        let valid = true;
+        if (this.top === undefined ||
+            this.left === undefined ||
+            this.right === undefined ||
+            this.top + this.left < this.right ||
+            this.left + this.right < this.top ||
+            this.top + this.right < this.left) {
+                valid = false;
             }
-        getArea() {
-            const p = (0.5 * (top + left + right));
-            return Math.sqrt(p(p - top)(p - left)(p - right));
+            return valid;
+    }
+    getPerimeter() {
+        if (!this.isValid()) {
+            return "Ошибка! Треугольник не существует"; //
+        } else {
+            return this.top + this.left + this.right;
         }
+    }
+    getArea() {
+        if (!this.isValid()) {
+            return "Ошибка! Треугольник не существует";
+        } else {
+            let semiPerimeter = this.getPerimeter() / 2;
+            let perimeter = 0;
+            perimeter += Math.sqrt(semiPerimeter * (semiPerimeter - this.top) * (semiPerimeter - this.left) * (semiPerimeter - this.right));
+            return +perimeter.toFixed(3);
+        }
+    }
 }
+class FakePerimeter {
+    getArea() {
+        return "Ошибка! Треугольник не существует";
+    }
+    getPerimeter() {
+        return "Ошибка! Треугольник не существует";
+    }
+};
 function getTriangle(top, left, right) {
     try {
-        return triangle = new Triangle(top, left, right);
-    } catch (Triangle) {
-        return Triangle
+        return new Triangle(top, left, right)
+    } catch (error) {
+        return new FakePerimeter()
     }
-}
+};
+

@@ -20,7 +20,7 @@ class PrintEditionItem {
         }
     }
     get state() {
-    return this._state;
+        return this._state;
     }
     fix() {
         return this._state;
@@ -37,9 +37,9 @@ class Magazine extends PrintEditionItem {
 
 class Book extends PrintEditionItem {
     constructor(author, name, releaseDate, pagesCount) {
-    super(name, releaseDate, pagesCount);
-    this.author = author;
-    this.type = "book";
+        super(name, releaseDate, pagesCount);
+        this.author = author;
+        this.type = "book";
     }
 }
 
@@ -81,9 +81,15 @@ class Library extends PrintEditionItem {
         };
     }
     findBookBy(type, value) {
-            
+        type = this.books;
+        value = this.book;
+        if (this.books === []) {
+            return null;
+        } else {
+            return this.books.find((item) => item[type] === value);
+        }
     }
     giveBookByName(bookName) {
-       
-    }
+        
+}
 }
