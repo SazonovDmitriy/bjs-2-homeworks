@@ -81,15 +81,19 @@ class Library extends PrintEditionItem {
         };
     }
     findBookBy(type, value) {
-        type = this.books;
-        value = this.book;
-        if (this.books === []) {
-            return null;
+        let findBook = this.books.find((item) => item[type] === value);
+        if (findBook) {
+            return findBook;
         } else {
-            return this.books.find((item) => item[type] === value);
+            return null;
         }
     }
     giveBookByName(bookName) {
-        
-}
+        let findBookName = this.findBookBy('name', bookName);
+        if (findBookName != null) {
+            const indexBook = this.books.indexOf(findBookName);
+            this.books.splice(indexBook, 1);
+        }
+        return findBookName;
+    }
 }
