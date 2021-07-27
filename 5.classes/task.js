@@ -7,7 +7,6 @@ class PrintEditionItem {
         this.pagesCount = pagesCount;
         this.state = 100;
         this.type = null;
-        this.author = "";
     }
     set state(stateUp) {
         stateUp *= 1.5;
